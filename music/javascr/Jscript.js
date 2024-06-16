@@ -26,9 +26,9 @@ const app = {
   config: JSON.parse(localStorage.getItem(PlAYER_STORAGE_KEY)) || {},
   songs: [
         {
-            name:'Chỉ bằng cái gật đầu mix',
-            path:'../nhac/Chỉ bằng cái gật đầu mix.mp3',
-            artist:'Leanhmusis <i class="fa-duotone fa-headphones"></i>',
+            name:'Chỉ bằng cái gật đầu',
+            path:'../nhac/Chỉ bằng cái gật đầu.mp3',
+            artist:'Yan Nguyễn',
             image:'../nhac/chỉ bằng cái gật đầu.jpg'
         },
         {
@@ -54,7 +54,37 @@ const app = {
             path:'../nhac/I Belong To You Bae - HUI .mp3',
             artist:'HUI',
             image:'../nhac/I Belong To You Bae - HUI.jpg'
-        }
+        },
+        {
+            name:'Chân Ái',
+            path:'../nhac/CHÂN ÁI - ORANGE x KHÓI x CHÂU ĐĂNG KHOA - Official Music Video.mp3',
+            artist:'ORANGE x KHÓI x CHÂU ĐĂNG KHOA',
+            image:'../nhac/CHÂN ÁI - ORANGE x KHÓI x CHÂU ĐĂNG KHOA - Official Music Video.jpg'
+        },
+        {
+            name:'Tình Nhân Ơi',
+            path:'../nhac/TÌNH NHÂN ƠI - ORANGE Ft BINZ.mp3',
+            artist:'BINZ',
+            image:'../nhac/TÌNH NHÂN ƠI - ORANGE Ft BINZ.jpg'
+        },
+        {
+            name:'Thằng Hầu',
+            path:'../nhac/Thằng Hầu.mp3',
+            artist:'Nhật Phong x Mạc Văn Khoa x Ny Saki',
+            image:'../nhac/Thằng Hầu.jpg'
+        },
+        {
+            name:'Túy Âm',
+            path:'../nhac/Túy Âm.mp3',
+            artist:'XeSi x NhatNguyen',
+            image:'../nhac/Túy Âm.jpg'
+        },
+        {
+            name:'Kém Duyên',
+            path:'../nhac/KÉM DUYÊN - RUM X NIT X MASEW.mp3',
+            artist:'RUM X NIT X MASEW',
+            image:'../nhac/KÉM DUYÊN - RUM X NIT X MASEW.jpg'
+        },
   ],
   setConfig: function (key, value) {
     this.config[key] = value;
@@ -255,6 +285,21 @@ const app = {
         const duration = audio.duration;
         $(".music-time").textContent = this.formatTime(duration);
       };
+      if ('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: this.currentSong.name,
+          artist: this.currentSong.artist,
+          album: 'Music Player',
+          artwork: [
+            { src: this.currentSong.image, sizes: '96x96', type: 'image/png' },
+            { src: this.currentSong.image, sizes: '128x128', type: 'image/png' },
+            { src: this.currentSong.image, sizes: '192x192', type: 'image/png' },
+            { src: this.currentSong.image, sizes: '256x256', type: 'image/png' },
+            { src: this.currentSong.image, sizes: '384x384', type: 'image/png' },
+            { src: this.currentSong.image, sizes: '512x512', type: 'image/png' },
+          ]
+        });
+      }
   },
   loadConfig: function () {
     this.isRandom = this.config.isRandom;
@@ -309,5 +354,18 @@ const app = {
     repeatBtn.classList.toggle("active", this.isRepeat);
   }
 };
+
+//mở menu
+const menuToggle = document.getElementById('mobile-menu');
+const navList = document.querySelector('.nav-list');
+
+menuToggle.addEventListener('click', () => {
+    navList.classList.toggle('active');
+});
+window.addEventListener('scroll', () => {
+    if (navList.classList.contains('active')) {
+        navList.classList.remove('active');
+    }
+});
 
 app.start();

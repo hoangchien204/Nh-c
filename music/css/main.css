@@ -18,6 +18,118 @@
     font-family: "Poppins", sans-serif;
   }
   
+  /* menu */
+  @media (min-width: 769px) {
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #333;
+        padding: 10px 20px;
+        right: 135px;
+        height: 30%;
+        width: 134px;
+        /* z-index: 1000; */
+        position: relative;
+
+    }
+  }
+ 
+
+.logo {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-grow: 1;
+    
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.nav-list li {
+    margin: 0 15px;
+}
+
+.nav-list li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+}
+
+@media (max-width: 768px) {
+    
+    .navbar{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, #310192, #131e5e, #1b256a, #20274e, #1d0e38);
+      padding: 10px 20px;
+      color: #fff;
+      right: 0px;
+      top: -80px;
+      height: 30%;
+      font-size: 28px;
+      width: 66px;
+      border-radius: 0 5px 5px 5px;
+      z-index: 1000;
+      position: relative;
+    }
+
+    .nav-list {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      width: 100dvw;
+      top: 50px;
+      left: 0;
+      background-color: #333;
+      background: #000000b6;
+      text-align: center;
+      transition: all .5s;
+  }
+    
+
+    .nav-list.active {
+        display: flex;
+    }
+
+    .nav-list li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+    .player {
+      padding-top: 80px; 
+  }
+  
+}
+#bar:hover {
+  animation: changeColor 1s; /* Áp dụng animation với tên là 'changeColor' trong 3s */
+}
+
+/*  */
   .player {
     position: relative;
     max-width: 480px;
@@ -38,7 +150,7 @@
   
   .dashboard {
     padding: 16px 16px 14px;
-    background-color: #fff;
+    background: linear-gradient(135deg, #310192, #131e5e, #1b256a, #20274e, #1d0e38);
     position: fixed;
     top: 0;
     width: 100%;
@@ -58,7 +170,7 @@
   }
   
   header h2 {
-    color: var(--text-color);
+    color: #fff;
     font-size: 20px;
   }
   
@@ -87,7 +199,7 @@
   }
   
   .control .btn {
-    color: #666;
+    color: #d1caca;
     padding: 18px;
     font-size: 18px;
   }
@@ -140,15 +252,16 @@
 
   /* PLAYLIST */
   .playlist {
-    margin-top: 408px;
+    margin-top: 287px;
     padding: 12px;
+    background: linear-gradient(135deg, #310192, #131e5e, #1b256a, #20274e, #1d0e38);
   }
   
   .song {
     display: flex;
     align-items: center;
     margin-bottom: 12px;
-    background-color: #fff;
+    background-color: #47059b;
     padding: 8px 16px;
     margin-top: 12px;
     border-radius: 5px;
@@ -184,7 +297,7 @@
   
   .song .title {
     font-size: 18px;
-    color: var(--text-color);
+    color: #fff;
   }
   
   .song .author {
