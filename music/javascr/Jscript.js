@@ -85,6 +85,18 @@ const app = {
             artist:'RUM X NIT X MASEW',
             image:'../nhac/KÉM DUYÊN - RUM X NIT X MASEW.jpg'
         },
+        {
+            name:'Sau Tất Cả ',
+            path:'../nhac/Sau tất cả .mp3',
+            artist:'Erik',
+            image:'../nhac/Sau tất cả .jpg'
+        },
+        {
+            name:'Muộn Rồi Mà Sao Còn ',
+            path:'../nhac/MUỘN RỒI MÀ SAO CÒN.mp3',
+            artist:'SƠN TÙNG MTP',
+            image:'../nhac/MUỘN RỒI MÀ SAO CÒN.jpg'
+        },
   ],
   setConfig: function (key, value) {
     this.config[key] = value;
@@ -275,7 +287,9 @@ const app = {
         block: "nearest"
       });
     }, 300);
+    
   },
+  
   loadCurrentSong: function () {
     heading.textContent = this.currentSong.name;
     cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
@@ -285,6 +299,40 @@ const app = {
         const duration = audio.duration;
         $(".music-time").textContent = this.formatTime(duration);
       };
+      if ('mediaSession' in navigator) {
+        navigator.mediaSession.setActionHandler('play', function () {
+          audio.play();
+        });
+      
+        navigator.mediaSession.setActionHandler('pause', function () {
+          audio.pause();
+        });
+      
+        navigator.mediaSession.setActionHandler('previoustrack', function () {
+          app.prevSong();
+          audio.play();
+        });
+      
+        navigator.mediaSession.setActionHandler('nexttrack', function () {
+          app.nextSong();
+          audio.play();
+        });
+      
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: app.currentSong.name,
+          artist: app.currentSong.artist,
+          album: 'Music Player',
+          artwork: [
+            { src: app.currentSong.image, sizes: '96x96', type: 'image/png' },
+            { src: app.currentSong.image, sizes: '128x128', type: 'image/png' },
+            { src: app.currentSong.image, sizes: '192x192', type: 'image/png' },
+            { src: app.currentSong.image, sizes: '256x256', type: 'image/png' },
+            { src: app.currentSong.image, sizes: '384x384', type: 'image/png' },
+            { src: app.currentSong.image, sizes: '512x512', type: 'image/png' },
+          ]
+        });
+      }
+      
       if ('mediaSession' in navigator) {
         navigator.mediaSession.metadata = new MediaMetadata({
           title: this.currentSong.name,
@@ -369,3 +417,4 @@ window.addEventListener('scroll', () => {
 });
 
 app.start();
+
