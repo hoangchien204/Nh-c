@@ -97,6 +97,19 @@ const app = {
             artist:'SƠN TÙNG MTP',
             image:'../nhac/MUỘN RỒI MÀ SAO CÒN.jpg'
         },
+        
+        {
+            name:'không phải dạng vừa đâu ',
+            path:'../nhac/không phải dạng vừa đâu - SƠN TÙNG MTP.mp3',
+            artist:'SƠN TÙNG MTP',
+            image:'../nhac/không phải dạng vừa đâu - SƠN TÙNG MTP.jpg'
+        },
+        {
+            name:'Ngày đẹp trời để nói chia tay',
+            path:'../nhac/LOU HOÀNG - NGÀY ĐẸP TRỜI ĐỂ NÓI CHIA TAY (Official Music Video).mp3',
+            artist:'LOU HOÀNG',
+            image:'../nhac/LOU HOÀNG - NGÀY ĐẸP TRỜI ĐỂ NÓI CHIA TAY (Official Music Video).jpg'
+        },
   ],
   setConfig: function (key, value) {
     this.config[key] = value;

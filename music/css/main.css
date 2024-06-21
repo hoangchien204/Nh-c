@@ -241,6 +241,7 @@
   }
   .current-time, .music-time{
     font-size: 12px;
+    color: #fff;
   }
   
   .music-time{
