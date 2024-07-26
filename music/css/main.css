@@ -312,4 +312,12 @@
     font-size: 18px;
   }
   
-  
+  .dropdown-menu {
+    display: none;
+  }
+  .add-song {
+    display: none;
+  }
+  .Add .add-song:hover{
+    display: block;
+  }

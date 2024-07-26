@@ -110,6 +110,24 @@ const app = {
             artist:'LOU HOÀNG',
             image:'../nhac/LOU HOÀNG - NGÀY ĐẸP TRỜI ĐỂ NÓI CHIA TAY (Official Music Video).jpg'
         },
+        {
+            name:'Nói Có Sẽ Khó Nhưng Vui Remix',
+            path:'../nhac/Nói Có Sẽ Khó Nhưng Vui Remix TikTok - (AnhVu  Thazh Remix) Chào Làn Tóc Mây Trong Nắng Sớm Tik Tok.mp3',
+            artist:'ANHVU  THAZH',
+            image:'../nhac/Nói Có Sẽ Khó Nhưng Vui Remix TikTok - (AnhVu  Thazh Remix) Chào Làn Tóc Mây Trong Nắng Sớm Tik Tok.jpg'
+        },
+        {
+            name:'Vừa Hận Vừa Yêu',
+            path:'../nhac/Trung Tự - Vừa Hận Vừa Yêu (Official MV) - Album Ngôi Sao.mp3',
+            artist:'Trung Tự',
+            image:'../nhac/Trung Tự - Vừa Hận Vừa Yêu (Official MV) - Album Ngôi Sao.jpg'
+        },
+        {
+            name:'Ngây thơ',
+            path:'../nhac/Ngây Thơ - Phong Max feat Tang Duy Tan - Phong Max remix -  Vietnamese Music.mp3',
+            artist:'Phong Max',
+            image:'../nhac/Ngây Thơ - Phong Max feat Tang Duy Tan - Phong Max remix -  Vietnamese Music.jpg'
+        },
   ],
   setConfig: function (key, value) {
     this.config[key] = value;
@@ -131,6 +149,11 @@ const app = {
                             </div>
                             <div class="option">
                                 <i class="fas fa-ellipsis-h"></i>
+                                 <div class="dropdown-menu">
+                                  <a href="#">Option 1</a>
+                                  <a href="#">Option 2</a>
+                                  <a href="#">Option 3</a>
+                                </div>
                             </div>
                         </div>
                     `;
@@ -266,6 +289,7 @@ const app = {
       }
     };
 
+    
     // Lắng nghe hành vi click vào playlist
     // Listen to playlist clicks
     playlist.onclick = function (e) {
@@ -280,13 +304,31 @@ const app = {
           _this.render();
           audio.play();
         }
-
-        // Xử lý khi click vào song option
-        // Handle when clicking on the song option
-        if (e.target.closest(".option")) {
-        }
+      };
+       const optionNode = e.target.closest(".option");
+      if (optionNode) {
+          const dropdownMenu = optionNode.querySelector(".dropdown-menu");
+          if (dropdownMenu) {
+            dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+          }
       }
-    };
+
+      addSongBtn.onclick = function () {
+        const newSong = {
+          name: songNameInput.value,
+          artist: songArtistInput.value,
+          path: songUrlInput.value,
+          image: songImageInput.value
+        };
+        _this.songs.push(newSong);
+        _this.render();
+        songNameInput.value = '';
+        songArtistInput.value = '';
+        songUrlInput.value = '';
+        songImageInput.value = '';
+      };
+        
+      }
   },
   formatTime: function (seconds) {
     const minutes = Math.floor(seconds / 60);
@@ -362,6 +404,7 @@ const app = {
         });
       }
   },
+  
   loadConfig: function () {
     this.isRandom = this.config.isRandom;
     this.isRepeat = this.config.isRepeat;
@@ -389,6 +432,7 @@ const app = {
     this.currentIndex = newIndex;
     this.loadCurrentSong();
   },
+  
   start: function () {
     // Gán cấu hình từ config vào ứng dụng
     // Assign configuration from config to application
