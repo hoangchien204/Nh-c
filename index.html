@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
     <!-- menu -->
@@ -17,13 +17,23 @@
 
     <div class="player">
     <!-- Dashboard -->
-     
     <nav class="navbar">
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fa-thin fa-bars" id="bar"></i>
             </div>
         
-       
+        <ul class="nav-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Album</a></li>
+            <li><a href="#services" class="Add">AddSong<div class="add-song">
+                <input type="text" id="song-name" placeholder="Tên bài hát">
+                <input type="text" id="song-artist" placeholder="Nghệ sĩ">
+                <input type="text" id="song-url" placeholder="URL bài hát">
+                <input type="text" id="song-image" placeholder="URL hình ảnh">
+                <button id="add-song-btn">Thêm bài hát</button>
+              </div></a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
     <div class="dashboard">
         <!-- Header -->
